@@ -1,6 +1,7 @@
 import win32api, win32con
 from time import sleep
 from userinfo import username, password
+from enable_flash import enable_flash
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from PIL import ImageGrab
@@ -9,12 +10,11 @@ import time
 
 """
 
-All coordinates assume a screen resolution of 1280x1024, and Chrome 
-maximized with the Bookmarks Toolbar enabled.
-Down key has been hit 4 times to center play area in browser.
-x_pad = 156
-y_pad = 345
-Play area =  x_pad+1, y_pad+1, 796, 825
+All coordinates assume a screen resolution of 1920 x 1080, and Chrome 
+maximized with the Bookmarks Toolbar disabled.
+x_pad = -1
+y_pad = 95
+Play area =  x_pad+1, y_pad+1, 1344, 972
 """
 
 
@@ -27,31 +27,9 @@ y_pad = 95
 class WebkinzBot():
 
     def __init__(self):
+
         self.driver = webdriver.Chrome()
-
-        #enabling flash for this browsing session
-        self.driver.get("chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.webkinz.com")
-
-        root1 = self.driver.find_element_by_tag_name('settings-ui')
-        shadow_root1 = self.driver.execute_script('return arguments[0].shadowRoot', root1)
-
-        root2 = shadow_root1.find_element_by_tag_name('settings-main')
-        shadow_root2 = self.driver.execute_script('return arguments[0].shadowRoot', root2)
-
-        root3 = shadow_root2.find_element_by_tag_name('settings-basic-page')
-        shadow_root3 = self.driver.execute_script('return arguments[0].shadowRoot', root3)
-
-        root4 = shadow_root3.find_element_by_tag_name('settings-privacy-page')
-        shadow_root4 = self.driver.execute_script('return arguments[0].shadowRoot', root4)
-
-        root5 = shadow_root4.find_element_by_css_selector('#pages > settings-subpage > site-details')
-        shadow_root5 = self.driver.execute_script('return arguments[0].shadowRoot', root5)
-
-        root6 = shadow_root5.find_element_by_css_selector('#plugins')
-        shadow_root6 = self.driver.execute_script('return arguments[0].shadowRoot', root6)
-
-        permission_select = Select(shadow_root6.find_element_by_css_selector('#permission'))
-        permission_select.select_by_value('allow')
+        self.driver = enable_flash(self.driver)
 
     def screenGrab(self):
         box = (x_pad+1, y_pad+1, x_pad + 1344, y_pad + 972)
@@ -101,8 +79,20 @@ class WebkinzBot():
         sleep(15)
         self.driver.maximize_window()
 
+    def close_landing_alerts(self):
+        #if screen_shade != normal_screen_shade{code below}:
+        #click daily delivery popup
+        self.mousePos((782, 277))
+        self.leftClick()
+        time.sleep(1.5)
+        #}
+
     def daily_activities(self):
         #screenGrab()
+
+        #closes daily delivery alert
+        self.close_landing_alerts()
+
         #click menu button
         self.mousePos((1290, 932))
         self.leftClick()
@@ -128,10 +118,105 @@ class WebkinzBot():
         self.mousePos((733, 616))
         self.leftClick()
         time.sleep(5)
+        self.leftClick()
+        time.sleep(5)
+
+        #click on "ok" for congrats alert after winning or not
+        self.mousePos((722, 414))
+        self.leftClick()
+        time.sleep(5)
+
+        # click menu button
+        self.mousePos((1290, 932))
+        self.leftClick()
+        time.sleep(1.5)
+
+        #click today's activities
+        self.mousePos((841, 129))
+        self.leftClick()
+        time.sleep(2.5)
+
+        #scroll to bottom of today's activities
+        self.mousePos((710, 567))
+        for i in range(25):
+            self.leftClick()
+        time.sleep(0.1)
+
+        #select bottom - 1 desired activity
+        self.mousePos((681, 503))
+        self.leftClick()
+        time.sleep(5)
+
+        # click "spin" on wheel of deluxe
+        self.mousePos((676, 599))
+        self.leftClick()
+        time.sleep(5)
+        self.leftClick()
+        time.sleep(5)
+
+        # click on "ok" for congrats alert after winning or not
+        self.mousePos((722, 414))
+        self.leftClick()
+        time.sleep(5)
+
+        # click menu button
+        self.mousePos((1290, 932))
+        self.leftClick()
+        time.sleep(1.5)
+
+        # click today's activities
+        self.mousePos((841, 129))
+        self.leftClick()
+        time.sleep(2.5)
+
+        # scroll to bottom of today's activities
+        self.mousePos((710, 567))
+        for i in range(25):
+            self.leftClick()
+        time.sleep(0.1)
+
+        # select bottom - 2 desired activity
+        self.mousePos((681, 324))
+        self.leftClick()
+        time.sleep(5)
+
+        # # click "spin" on wheel of wow
+        # self.mousePos((733, 616))
+        # self.leftClick()
+        # time.sleep(5)
+        # self.leftClick()
+        # time.sleep(5)
+
+        # # click on "ok" for congrats alert after winning or not
+        # self.mousePos((722, 414))
+        # self.leftClick()
+        # time.sleep(5)
+        #
+        # # click menu button
+        # self.mousePos((1290, 932))
+        # self.leftClick()
+        # time.sleep(1.5)
+        #
+        # # click today's activities
+        # self.mousePos((841, 129))
+        # self.leftClick()
+        # time.sleep(2.5)
+        #
+        # # scroll to bottom of today's activities
+        # self.mousePos((710, 567))
+        # for i in range(25):
+        #     self.leftClick()
+        # time.sleep(0.1)
+        #
+        # # select bottom - 3 desired activity
+        # self.mousePos((681, 293))
+        # self.leftClick()
+        # time.sleep(5)
+
 
 
 
 
 bot = WebkinzBot()
 bot.login()
-bot.daily_activities()
+#bvvvvvvvvvvvvvvv`v     v   v bot.daily_activities()
