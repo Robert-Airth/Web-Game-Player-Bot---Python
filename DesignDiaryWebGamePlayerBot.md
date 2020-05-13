@@ -28,15 +28,15 @@ attempts to close them, and proceeds without closed-loop feedback. It uses this 
 activities (chance wheels to spin). 
 
 Once the dailies are completed, the script proceeds to navigate to the Wacky Zingos Extreme game where it then uses
- a closed-loop feedback control structure for playing each of the five hits/at-batsfor each game and then restarting
- the game to play again. After each at-bat, there is a game-generated swing-again alert which appearsto have pseudo-
+ a closed-loop feedback control structure for playing each of the five hits/at-bats for each game and then restarting
+ the game to play again. After each at-bat, there is a game-generated swing-again alert which appears to have pseudo-
 random placement on the screen within a range of coordinates. I was able to take multiple screenshots of these alert
  states and record the coordinates of these alerts. I took these coordinates and found a good range of screen coordinates
 to click on in an attempt at closing the alert to proceed to the next at-bat. I was able make this closed-loop by having the
-bot capture a segement of screen in the ready-to-swing state and compare this to whatever that same screen segment after each
+bot capture a segment of screen in the ready-to-swing state and compare this to whatever that same screen segment after each
 click within the range of coordinates to determine whether the state changed to ready-to-swing after each click. If it
 determines it has reset to the ready-to-swing state, the bot then proceeds to run the same loop again. This continues 
-5 times and on the final state, it closes the end-game alert/dialog using similar rudimentary image recognition.
+5 times and on the final state, it closes the end-game alert/dialog using similar rudimentary image recognition/feedback.
 
 My last step is to create .exe files from this code for my girlfriend and her mom to run on their Windows 10 laptops without Python.
 
