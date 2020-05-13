@@ -8,7 +8,7 @@ automating daily-reinforcement tasks to gain rewards, I was just intending to ma
 would be able to redeem her free daily spins on the days she is swamped with school. I ended up achieving this goal
 along with the goal of playing a game within Webkinz, Wacky Zingos Extreme, to earn money.
 
-The first setup was getting familiar with selenium, chromium, and pywin32; for reference I used these links:
+The first step was getting familiar with selenium, chromium, and pywin32; for reference I used these links:
 ![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
 ![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
 ![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
@@ -38,6 +38,14 @@ bot capture a segement of screen in the ready-to-swing state and compare this to
 click within the range of coordinates to determine whether the state changed to ready-to-swing after each click. If it
 determines it has reset to the ready-to-swing state, the bot then proceeds to run the same loop again. This continues 
 5 times and on the final state, it closes the end-game alert/dialog using similar rudimentary image recognition.
+
+While creating the above bot and speeding up its execution, I noticed it was becoming more difficult to kill the program
+since the bot took control of the mouse and focus for an infinite loop during Wacky Zingos Extreme. I tried a few different
+things and realized that the only way to kill the bot like I desired was to have a separate thread listening for the ESC key.
+This was the first time I learned about implementing threads, so it took me a while to research and develop my code to work
+properly. It now runs one thread listening for the ESC and when triggered, executes os._exit() to kill the main thread from
+a post-fork thread (I think that my understanding is correct since os.exit() didn't work properly). This took several more
+hours to figure out. I may want to add some other key-listening functionality like being able to pause/resume the bot's actions.
 
 My last step is to create .exe files from this code for my girlfriend and her mom to run on their Windows 10 laptops without Python.
 
