@@ -7,7 +7,7 @@ automating daily-reinforcement tasks to gain rewards, I was just intending to ma
 "wheels of chance" within the game which each get one free use-it-or-lose-it spin allocated daily to the user. The bot
 would be able to redeem her free daily spins on the days she is swamped with school. 
 
-The first setup was getting familiar with selenium, chromium, and pywin32; for reference I used these links:
+The first setup was getting familiar with selenium, chromium, PIL, and pywin32; for reference I used these links:
 * ![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
 * ![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
 * ![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
