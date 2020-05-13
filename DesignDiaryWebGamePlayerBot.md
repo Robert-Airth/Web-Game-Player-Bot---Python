@@ -9,9 +9,9 @@ would be able to redeem her free daily spins on the days she is swamped with sch
 along with the goal of playing a game within Webkinz, Wacky Zingos Extreme, to earn money.
 
 The first step was getting familiar with selenium, chromium, and pywin32; for reference I used these links:
-![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
-![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
-![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
+*![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
+*![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
+*![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
 
 My first hurdle was enabling flash in the Chrome browser. This proved to be difficult because I was unable to find
 a way to enable flash via Chromium args, so I decided to kluge it together. I decided to have the webdriver 
@@ -29,8 +29,8 @@ attempts to close them, and proceeds without closed-loop feedback. It uses this 
 activities (chance wheels to spin). 
 
 Once the dailies are completed, the script proceeds to navigate to the Wacky Zingos Extreme game where it then uses
- a closed-loop feedback control structure for playing each of the five hits/at-batsfor each game and then restarting
- the game to play again. After each at-bat, there is a game-generated swing-again alert which appearsto have pseudo-
+ a closed-loop feedback control structure for playing each of the five hits/at-bats for each game and then restarting
+ the game to play again. After each at-bat, there is a game-generated swing-again alert which appears to have pseudo-
 random placement on the screen within a range of coordinates. I was able to take multiple screenshots of these alert
  states and record the coordinates of these alerts. I took these coordinates and found a good range of screen coordinates
 to click on in an attempt at closing the alert to proceed to the next at-bat. I was able make this closed-loop by having the
