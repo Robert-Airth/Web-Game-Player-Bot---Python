@@ -8,9 +8,9 @@ automating daily-reinforcement tasks to gain rewards, I was just intending to ma
 would be able to redeem her free daily spins on the days she is swamped with school. 
 
 The first setup was getting familiar with selenium, chromium, and pywin32; for reference I used these links:
-![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
-![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
-![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
+..*![Automate TINDER with Python tutorial](https://www.youtube.com/watch?v=lvFAuUcowT4)
+..*![Advanced Python Programming: Browser Automation with Selenium]( https://www.youtube.com/watch?v=GJjMjB3rkJM)
+..*![How to Build a Python Bot That Can Play Web Games](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117)
 
 My first hurdle was enabling flash in the Chrome browser. This proved to be difficult because I was unable to find
 a way to enable flash via Chromium args, so I decided to kluge it together. I decided to have the webdriver 
