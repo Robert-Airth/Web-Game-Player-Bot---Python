@@ -43,9 +43,10 @@ While creating the above bot and speeding up its execution, I noticed it was bec
 since the bot took control of the mouse and focus for an infinite loop during Wacky Zingos Extreme. I tried a few different
 things and realized that the only way to kill the bot like I desired was to have a separate thread listening for the ESC key.
 This was the first time I learned about implementing threads, so it took me a while to research and develop my code to work
-properly. It now runs one thread listening for the ESC and when triggered, executes os._exit() to kill the main thread from
-a post-fork thread (I think that my understanding is correct since os.exit() didn't work properly). This took several more
-hours to figure out. I may want to add some other key-listening functionality like being able to pause/resume the bot's actions.
+properly. It now runs one thread listening for the ESC and when triggered, executes os._exit() to kill the main thread (bot) from
+a post-fork thread (key-listener) (I think that my understanding of how this works is correct since os.exit() didn't work properly).  
+This took several more hours to figure out. I may want to add some other key-listening functionality like being able to pause/resume 
+the bot's actions.
 
 My last step is to create .exe files from this code for my girlfriend and her mom to run on their Windows 10 laptops without Python.
 
