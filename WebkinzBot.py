@@ -365,7 +365,7 @@ class WebkinzBot():
                     current_state = ImageOps.grayscale(self.screen_grab(859, 178, 946, 293))
                     current_state = array(current_state.getcolors())
                     current_state = current_state.sum()
-                    print(current_state)
+                    # print(current_state)
                     if 29000 < current_state and current_state < 33000:
                         clickmore = False
 
@@ -373,7 +373,7 @@ class WebkinzBot():
                     current_state = ImageOps.grayscale(self.screen_grab(286, 158, 364, 213))
                     current_state = array(current_state.getcolors())
                     current_state = current_state.sum()
-                    print(current_state)
+                    # print(current_state)
                     if current_state != end_state:
                         clickmore = False
 
@@ -434,10 +434,10 @@ class WebkinzBot():
 #         sleep(0.01)
 #         return True
 #
-def play_webkinz():
-    bot = WebkinzBot("rob")
+def play_webkinz(name):
+    bot = WebkinzBot(name)
     bot.login()
-    # bot.daily_activities()
+    bot.daily_activities()
     for i in range(0, 5):
         bot.open_wacky_zingos_extreme()
         bot.play_wacky_zingos_extreme()
@@ -452,15 +452,18 @@ def on_press(key):
     #     # # Stop listener
     #     # return False
     else:
-        print("It's alive!")
+        # print("It's alive!")
         sleep(0.01)
         return True
 
+
 def main():
-    thread2 = threading.Thread(target=play_webkinz, args=())
+    username = input("Which account would you like to log into? Type ''rob'', ''hayley'', or ''paulette'') ")
+    thread2 = threading.Thread(target=play_webkinz, args={username})
     thread2.start()
     with keyboard.Listener(on_press=on_press) as listener:
         listener.join()
+
 
 main()
 
